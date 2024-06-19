@@ -269,9 +269,9 @@ main(int argc, char **argv)
 	lrzsz_check_stderr(&config);
 	chkinvok(argv[0]);
 
-	setlocale (LC_ALL, "");
-	bindtextdomain (PACKAGE, LOCALEDIR);
-	textdomain (PACKAGE);
+	//setlocale (LC_ALL, "");
+	//bindtextdomain (PACKAGE, LOCALEDIR);
+	//textdomain (PACKAGE);
 
 	parse_long_options (argc, argv, show_version, usage1);
 

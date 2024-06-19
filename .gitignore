@@ -8,7 +8,6 @@ src/lrz
 src/lsz
 src/lrzszbug
 config.cache
-config.h
 config.log
 config.status
 lib/.deps/

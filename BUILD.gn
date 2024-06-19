@@ -1,0 +1,67 @@
+import("//build/ohos.gni")
+
+common_sources = [
+  "lib/long-options.c",
+  "lib/xstrtol.c",
+  "lib/xstrtoul.c",
+  "lib/error.c",
+  "lib/getopt1.c",
+  "lib/getopt.c",
+  "lib/vasprintf.c",
+  "src/iomode.c",
+  "src/baudrate.c",
+  "src/check_stderr.c",
+  "src/utils.c",
+  "src/close_and_update_meta.c",
+  "src/log.c",
+  "src/canit.c",
+  "src/protname.c",
+  "src/zm.c",
+  "src/rbsb.c",
+  "src/timing.c",
+  "src/zreadline.c",
+  "src/crctab.c",
+]
+
+config("lrzsz_config") {
+  include_dirs = [
+    ".",
+    "src",
+    "lib",
+  ]
+  cflags = [
+    "-Wno-deprecated-non-prototype",
+    "-Wno-sign-compare",
+    "-Wno-macro-redefined",
+    "-Wno-incompatible-pointer-types-discards-qualifiers",
+    "-Wno-error=dangling-else",
+    "-Wno-error=implicit-function-declaration",
+    "-Wno-error=switch",
+    "-Wno-error=unused-variable",
+    "-DHAVE_CONFIG_H",
+  ]
+}
+
+ohos_executable("lsz") {
+  sources = [ "src/lsz.c" ]
+  sources += common_sources
+  configs = [ ":lrzsz_config" ]
+  install_enable = true
+  part_name = "lrzsz"
+  subsystem_name = "thirdparty"
+  install_images = [
+    "system",
+  ]
+}
+
+ohos_executable("lrz") {
+  sources = [ "src/lrz.c" ]
+  sources += common_sources
+  configs = [ ":lrzsz_config" ]
+  install_enable = true
+  part_name = "lrzsz"
+  subsystem_name = "thirdparty"
+  install_images = [
+    "system",
+  ]
+}
